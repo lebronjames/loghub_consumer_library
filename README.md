@@ -333,7 +333,9 @@ public class LogHubConfig
 }
 ```
 ```
+
 ## 常见问题&注意事项
+
 * LogHubConfig 中 consumerGroupName表一个消费组，consumerGroupName相同的consumer分摊消费logstore中的shard，同一个consumerGroupName中的consumer，通过workerInstance name进行区分。 
 ```
 假设logstore中有shard 0 ~ shard 3 这4个shard。
