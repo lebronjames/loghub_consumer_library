@@ -332,7 +332,6 @@ public class LogHubConfig
 	private boolean mConsumeInOrder; 
 }
 ```
-```
 
 ## 常见问题&注意事项
 
