@@ -212,10 +212,10 @@ wait状态需要重点说明下，假设某个时刻数据仓库所有shard的�
         Thread thread = new Thread(worker);
         //thread运行之后，client worker会自动运行，ClientWorker扩展了Runnable接口。
         thread.start();
+	//ClientWorker运行过程中会生成多个异步的Task，shutdown之后最好等待还在执行的Task安全退出，建议30s。
+        Thread.sleep(30 * 1000);
         //调用worker的shutdown函数，退出消费实例，关联的线程也会自动停止。
         worker.shutdown();
-        //ClientWorker运行过程中会生成多个异步的Task，shutdown之后最好等待还在执行的Task安全退出，建议30s。
-        Thread.sleep(30 * 1000);
 	}
 
 ```
