@@ -98,6 +98,12 @@ public class ClientWorker implements Runnable {
 	{
 		this.mShutDown = true;
 		mLogHubHeartBeat.Stop();
+		for (Entry<Integer, LogHubConsumer> shard : mShardConsumer.entrySet())
+		{
+			LogHubConsumer consumer = shard.getValue();
+			consumer.shutdown();
+			logger.warn("try to shut down consumer shard:" + shard.getKey());
+		}
 	}
 	
 	private void cleanConsumer(ArrayList<Integer> ownedShard)
